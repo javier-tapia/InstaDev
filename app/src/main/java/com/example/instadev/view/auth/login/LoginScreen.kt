@@ -49,6 +49,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
             Text(
                 modifier = Modifier.padding(top = 22.dp),
                 text = "Español (Latinoamérica)",
+                style = MaterialTheme.typography.titleLarge,
                 color = MaterialTheme.colorScheme.onBackground
             )
             Spacer(modifier = Modifier.weight(1f))
@@ -65,6 +66,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 label = {
                     Text(
                         text = "Usuario, email o teléfono",
+                        style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onBackground
                     )
                 },
@@ -77,7 +79,8 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 value = uiState.password,
                 label = {
                     Text(
-                        "Contraseña",
+                        text = "Contraseña",
+                        style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onBackground
                     )
                 },
@@ -101,6 +104,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
             ) {
                 Text(
                     text = "¿Has olvidado la contraseña?",
+                    style = MaterialTheme.typography.titleSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
