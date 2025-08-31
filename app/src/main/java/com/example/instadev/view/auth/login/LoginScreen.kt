@@ -61,7 +61,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
             Spacer(modifier = Modifier.weight(1f))
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(24),
+                shape = MaterialTheme.shapes.small,
                 value = uiState.email,
                 label = {
                     Text(
@@ -75,7 +75,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
             Spacer(modifier = Modifier.height(12.dp))
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(24),
+                shape = MaterialTheme.shapes.small,
                 value = uiState.password,
                 label = {
                     Text(
@@ -89,9 +89,10 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
             Spacer(modifier = Modifier.height(12.dp))
             Button(
                 modifier = Modifier.fillMaxWidth(),
+                onClick = { },
+                shape = MaterialTheme.shapes.extraLarge,
                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
                 enabled = uiState.isLoginEnabled,
-                onClick = { }
             ) {
                 Text(
                     modifier = Modifier.padding(vertical = 4.dp),
@@ -112,6 +113,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
             OutlinedButton(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {},
+                shape = MaterialTheme.shapes.extraLarge,
                 border = BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.primary)
             ) {
                 Text(
