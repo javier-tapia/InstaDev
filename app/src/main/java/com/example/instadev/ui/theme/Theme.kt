@@ -12,19 +12,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = InstaBlue,
+    primary = InstaDevBlue,
     onPrimary = Color.White,
-    background = InstaGray20,
-    onBackground = InstaGray70,
+    background = InstaDevGray20,
+    onBackground = InstaDevGray70,
     onSurfaceVariant = Color.White,
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = InstaBlue,
+    primary = InstaDevBlue,
     onPrimary = Color.White,
-    background = InstaGray100,
-    onBackground = InstaGray80,
-    onSurfaceVariant = InstaGray30,
+    background = InstaDevGray100,
+    onBackground = InstaDevGray80,
+    onSurfaceVariant = InstaDevGray30,
 )
 
 @Composable

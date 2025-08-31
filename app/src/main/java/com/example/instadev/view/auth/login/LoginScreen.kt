@@ -11,15 +11,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,6 +27,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.instadev.R
+import com.example.instadev.view.core.components.InstaDevButton
+import com.example.instadev.view.core.components.InstaDevText
 
 @Preview
 @Composable
@@ -46,11 +44,10 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 .padding(horizontal = 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
+            InstaDevText(
                 modifier = Modifier.padding(top = 22.dp),
-                text = "Español (Latinoamérica)",
                 style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colorScheme.onBackground
+                text = "Español (Latinoamérica)"
             )
             Spacer(modifier = Modifier.weight(1f))
             Image(
@@ -64,10 +61,8 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 shape = MaterialTheme.shapes.small,
                 value = uiState.email,
                 label = {
-                    Text(
-                        text = "Usuario, email o teléfono",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onBackground
+                    InstaDevText(
+                        text = "Usuario, email o teléfono"
                     )
                 },
                 onValueChange = { loginViewModel.onEmailChanged(it) }
@@ -78,32 +73,23 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 shape = MaterialTheme.shapes.small,
                 value = uiState.password,
                 label = {
-                    Text(
+                    InstaDevText(
                         text = "Contraseña",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onBackground
                     )
                 },
                 onValueChange = { loginViewModel.onPasswordChanged(it) }
             )
             Spacer(modifier = Modifier.height(12.dp))
-            Button(
+            InstaDevButton(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = { },
-                shape = MaterialTheme.shapes.extraLarge,
-                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
+                buttonText = "Iniciar sesión",
                 enabled = uiState.isLoginEnabled,
-            ) {
-                Text(
-                    modifier = Modifier.padding(vertical = 4.dp),
-                    text = "Iniciar sesión",
-                    color = MaterialTheme.colorScheme.onPrimary
-                )
-            }
+                onClick = { }
+            )
             TextButton(
                 onClick = {}
             ) {
-                Text(
+                InstaDevText(
                     text = "¿Has olvidado la contraseña?",
                     style = MaterialTheme.typography.titleSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -116,7 +102,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 shape = MaterialTheme.shapes.extraLarge,
                 border = BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.primary)
             ) {
-                Text(
+                InstaDevText(
                     text = "Crear cuenta nueva",
                     color = MaterialTheme.colorScheme.primary
                 )
