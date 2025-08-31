@@ -1,5 +1,6 @@
 package com.example.instadev.view.auth.login
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -12,7 +13,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -22,7 +25,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,7 +40,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
     Scaffold { paddingValues ->
         Column(
             modifier = Modifier
-                .background(Color.White)
+                .background(MaterialTheme.colorScheme.background)
                 .fillMaxSize()
                 .padding(paddingValues)
                 .padding(horizontal = 24.dp),
@@ -46,7 +48,8 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
         ) {
             Text(
                 modifier = Modifier.padding(top = 22.dp),
-                text = "Español (Latinoamérica)"
+                text = "Español (Latinoamérica)",
+                color = MaterialTheme.colorScheme.onBackground
             )
             Spacer(modifier = Modifier.weight(1f))
             Image(
@@ -60,7 +63,10 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 shape = RoundedCornerShape(24),
                 value = uiState.email,
                 label = {
-                    Text("Usuario, email o teléfono")
+                    Text(
+                        text = "Usuario, email o teléfono",
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
                 },
                 onValueChange = { loginViewModel.onEmailChanged(it) }
             )
@@ -70,37 +76,51 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 shape = RoundedCornerShape(24),
                 value = uiState.password,
                 label = {
-                    Text("Contraseña")
+                    Text(
+                        "Contraseña",
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
                 },
                 onValueChange = { loginViewModel.onPasswordChanged(it) }
             )
             Spacer(modifier = Modifier.height(12.dp))
             Button(
                 modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
                 enabled = uiState.isLoginEnabled,
                 onClick = { }
             ) {
                 Text(
                     modifier = Modifier.padding(vertical = 4.dp),
-                    text = "Iniciar sesión"
+                    text = "Iniciar sesión",
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
             }
             TextButton(
                 onClick = {}
             ) {
-                Text("¿Has olvidado la contraseña?")
+                Text(
+                    text = "¿Has olvidado la contraseña?",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
             }
             Spacer(modifier = Modifier.weight(1.3f))
             OutlinedButton(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = {}
+                onClick = {},
+                border = BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.primary)
             ) {
-                Text("Crear cuenta nueva")
+                Text(
+                    text = "Crear cuenta nueva",
+                    color = MaterialTheme.colorScheme.primary
+                )
             }
             Icon(
-                modifier = Modifier.width(60.dp).padding(vertical = 22.dp),
+                modifier = Modifier
+                    .width(60.dp)
+                    .padding(vertical = 22.dp),
                 painter = painterResource(R.drawable.ic_meta),
-                tint = Color.Gray,
+                tint = MaterialTheme.colorScheme.onBackground,
                 contentDescription = "Logo Meta"
             )
         }
