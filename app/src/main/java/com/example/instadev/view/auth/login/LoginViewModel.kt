@@ -2,17 +2,11 @@ package com.example.instadev.view.auth.login
 
 import android.util.Patterns
 import androidx.lifecycle.ViewModel
+import com.example.instadev.view.state.LoginUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-
-data class LoginUiState(
-    val email: String = "",
-    val password: String = "",
-    val isLoading: Boolean = false,
-    val isLoginEnabled: Boolean = false
-)
 
 class LoginViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(LoginUiState())

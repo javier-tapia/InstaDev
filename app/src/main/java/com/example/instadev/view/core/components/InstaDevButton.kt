@@ -1,5 +1,6 @@
 package com.example.instadev.view.core.components
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -20,7 +21,7 @@ fun InstaDevButton(
     colors: ButtonColors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
 ) {
     Button(
-        modifier = modifier,
+        modifier = modifier.fillMaxWidth(),
         enabled = enabled,
         onClick = onClick,
         shape = shape,

@@ -82,7 +82,6 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
             )
             Spacer(modifier = Modifier.height(12.dp))
             InstaDevButton(
-                modifier = Modifier.fillMaxWidth(),
                 buttonText = stringResource(R.string.login_screen_login_button_text),
                 enabled = uiState.isLoginEnabled,
                 onClick = { }
