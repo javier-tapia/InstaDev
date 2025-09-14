@@ -14,14 +14,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.instadev.ui.theme.InstaDevTheme
 import com.example.instadev.view.auth.register.RegisterScreen
 import com.example.instadev.view.core.navigation.NavigationHandler
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             InstaDevTheme {
-                RegisterScreen()
+                NavigationHandler()
             }
         }
     }
