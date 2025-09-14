@@ -6,4 +6,16 @@
     <string name="login_screen_login_button_text">Login</string>
     <string name="login_screen_forgot_password_button_text">Did you forgot your password?</string>
     <string name="login_screen_create_new_account_button_text">Create new account</string>
+    <string name="register_screen_title_cellphone">What is you phone number?</string>
+    <string name="register_screen_title_email">What is your email address?</string>
+    <string name="register_screen_subtitle_cellphone">Enter your contact cell phone number. No one will see it on your profile.</string>
+    <string name="register_screen_subtitle_email">Enter your contact email address. No one will see it on your profile.</string>
+    <string name="register_screen_label_cellphone">Cellphone number</string>
+    <string name="register_screen_label_email">E-mail</string>
+    <string name="register_screen_disclaimer_cellphone">You may receive notifications from us on WhatsApp and via SMS for security and login purposes.</string>
+    <string name="register_screen_disclaimer_email">We\'ll also send you emails. You can opt out at any time. More information</string>
+    <string name="register_screen_button_next">Next</string>
+    <string name="register_screen_button_registration_method_cellphone">Sign up with your email address</string>
+    <string name="register_screen_button_registration_method_email">Register with your cell phone number</string>
+    <string name="register_screen_textbutton_search_account">Search my account</string>
 </resources>

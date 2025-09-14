@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.instadev.ui.theme.InstaDevTheme
+import com.example.instadev.view.auth.register.RegisterScreen
 import com.example.instadev.view.core.navigation.NavigationHandler
 
 class MainActivity : ComponentActivity() {
@@ -20,7 +21,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             InstaDevTheme {
-                NavigationHandler()
+                RegisterScreen()
             }
         }
     }

@@ -2,7 +2,6 @@ package com.example.instadev.view.auth.register
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,17 +14,26 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.instadev.R
 import com.example.instadev.view.core.components.InstaDevButton
 import com.example.instadev.view.core.components.InstaDevText
+import com.example.instadev.view.state.RegisterUiState
+import com.example.instadev.view.state.RegisterUiState.RegisterOption.CELLPHONE
 
 @Preview
 @Composable
-fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel()) {
+fun RegisterScreen(viewModel: RegisterViewModel = viewModel()) {
+    val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val currentRegisterOption = state.registerOption
+
     Scaffold { paddingValues ->
         Column(
             modifier = Modifier
@@ -36,36 +44,62 @@ fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel()) {
             horizontalAlignment = Alignment.Start
         ) {
             InstaDevText(
-                text = "¿Cuál es tu número de celular?",
+                text = if (currentRegisterOption == CELLPHONE) {
+                    stringResource(R.string.register_screen_title_cellphone)
+                } else {
+                    stringResource(R.string.register_screen_title_email)
+                },
                 style = MaterialTheme.typography.titleLarge
             )
             InstaDevText(
-                text = "Introduce tu número de celular de contacto. Nadie lo verá en tu perfil",
-                style = MaterialTheme.typography.titleMedium
+                text = if (currentRegisterOption == CELLPHONE) {
+                    stringResource(R.string.register_screen_subtitle_cellphone)
+                } else {
+                    stringResource(R.string.register_screen_subtitle_email)
+                },
+                style = MaterialTheme.typography.titleSmall
             )
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
-                value = "",
+                shape = MaterialTheme.shapes.small,
+                value = state.inputText,
                 label = {
                     InstaDevText(
-                        text = "Número de celular"
+                        text = if (currentRegisterOption == CELLPHONE) {
+                            stringResource(R.string.register_screen_label_cellphone)
+                        } else {
+                            stringResource(R.string.register_screen_label_email)
+                        }
                     )
                 },
-                onValueChange = { }
+                onValueChange = {
+                    viewModel.onInputChanged(it)
+                }
             )
             InstaDevText(
-                text = "Puede que recibas notificaciones nuestras en WhatsApp y por SMS por motivos de seguridad y para iniciar sesión.",
+                text = if (currentRegisterOption == CELLPHONE) {
+                    stringResource(R.string.register_screen_disclaimer_cellphone)
+                } else {
+                    stringResource(R.string.register_screen_disclaimer_email)
+                },
             )
             InstaDevButton(
-                buttonText = "Siguiente",
-                onClick = { }
+                buttonText = stringResource(R.string.register_screen_button_next),
+                onClick = { /* TODO */ },
+                enabled = state.isRegisterEnabled
             )
             OutlinedButton(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = { }
+                onClick = {
+                    viewModel.onRegisterMethodClick()
+                }
             ) {
                 InstaDevText(
-                    text = "Registrarte con tu correo electrónico"
+                    text = if (currentRegisterOption == CELLPHONE) {
+                        stringResource(R.string.register_screen_button_registration_method_cellphone)
+                    } else {
+                        stringResource(R.string.register_screen_button_registration_method_email)
+                    }
                 )
             }
             Spacer(Modifier.weight(1f))
@@ -74,10 +108,11 @@ fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel()) {
                 horizontalArrangement = Arrangement.Center
             ) {
                 TextButton(
-                    onClick = { }
+                    onClick = { /* TODO */ }
                 ) {
                     InstaDevText(
-                        text = "Buscar mi cuenta"
+                        text = stringResource(R.string.register_screen_textbutton_search_account),
+                        color = MaterialTheme.colorScheme.primary
                     )
                 }
             }

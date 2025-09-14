@@ -31,13 +31,13 @@ val Typography = Typography(
     ),
     titleMedium = TextStyle(
         fontFamily = asimovian,
-        fontSize = 20.sp,
+        fontSize = 18.sp,
         lineHeight = 26.sp,
         letterSpacing = 0.sp
     ),
     titleSmall = TextStyle(
         fontFamily = asimovian,
-        fontSize = 18.sp,
+        fontSize = 14.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.sp
     ),
