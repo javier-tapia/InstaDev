@@ -1,5 +1,6 @@
 package com.example.instadev.data.di
 
+import com.example.instadev.BuildConfig
 import com.example.instadev.data.datasources.api.LoginApiService
 import com.example.instadev.data.repositories.AuthRepositoryImpl
 import com.example.instadev.domain.repositories.AuthRepository
@@ -54,7 +55,11 @@ object DataModule {
             .readTimeout(20, TimeUnit.SECONDS)
             .writeTimeout(20, TimeUnit.SECONDS)
             .addInterceptor(HttpLoggingInterceptor().apply {
-                level = HttpLoggingInterceptor.Level.BODY
+                level = if (BuildConfig.DEBUG) {
+                    HttpLoggingInterceptor.Level.BODY
+                } else {
+                    HttpLoggingInterceptor.Level.NONE
+                }
             })
             .build()
 }
