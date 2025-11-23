@@ -68,6 +68,11 @@ dependencies {
     implementation(libs.hilt.navigation)
     ksp(libs.hilt.compiler)
 
+    // Retrofit & OkHttp
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.kotlinx)
+    implementation(libs.okhttp.logging)
+
     // Firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.database)
