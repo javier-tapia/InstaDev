@@ -74,6 +74,14 @@ dependencies {
     implementation(libs.retrofit.converter.kotlinx)
     implementation(libs.okhttp.logging)
 
+    // Ktor
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.okhttp)
+    implementation(libs.ktor.client.logging)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.slf4j.android)
+
     // Firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.database)
